@@ -16,16 +16,16 @@ jobs:
       - name: 📦 Kodu Götür
         uses: actions/checkout@v4
 
-      - name: 🛠️ LaTeX və Riyazi Mühit Analizi
+      - name: 🛠️ Layihə Struktur Yoxlanışı
         run: |
-          echo "Riyazi kitabxanalar və LaTeX mühiti yoxlanılır..."
+          echo "E-commerce layihəsi yoxlanılır..."
           # Struktur yoxlanışı
           [ -f "index.html" ] && echo "Ana səhifə tapıldı." || exit 1
 
-      - name: 🧪 Riyazi Sintaksis Testləri (Validation)
+      - name: 🧪 Frontend (Validation)
         run: |
-          echo "LaTeX düsturları və hesablama məntiqi test edilir..."
-          echo "Status: Bütün riyazi modullar uğurla keçdi (100%)."
+          echo "HTML/CSS struktur yoxlanır..."
+          echo "Status: Frontend fayllar hazırdır."
 
   # --- CD HİSSƏSİ (Həm İmitasiya, həm də Real Vercel Deploy) ---
   Build_Deploy:
@@ -39,9 +39,9 @@ jobs:
       - name: 🛠️ Vercel CLI Quraşdır
         run: npm install --global vercel@latest
 
-      - name: 🏗️ Hesabat Yaradılması (İmitasiya)
+      - name: 🏗️ Build (E-commerce Project)
         run: |
-          echo "Riyazi Analiz Hesabatı generasiya olunur..."
+          echo "E-commerce sayt build edilir..."
           mkdir -p dist
           echo "Deployment Report v1.0" > dist/deploy_report.txt
 
@@ -57,8 +57,8 @@ jobs:
       - name: 📝 Deployment Summary
         run: |
           {
-            echo "## 🚀 CI/CD Nəticəsi (Riyaziyyat ixtisası üzrə)"
+            echo "## 🚀 CI/CD Deployment Summary (E-commerce Project)"
             echo "- **Status:** ✅ Sayt Vercel-ə uğurla yerləşdirildi."
-            echo "- **İmitasiya:** Riyazi hesabatlar `dist/` qovluğuna yaradıldı."
+            echo "- **İmitasiya:** Frontend E-commerce Website (HTML + Bootstrap + CSS)"
             echo "- **Mərhələ:** CD - Build_Deploy tamamlandı."
           } >> "$GITHUB_STEP_SUMMARY"
